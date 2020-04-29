@@ -102,4 +102,26 @@ class Admin extends Base
 
         return $this->view ->fetch('admin_list');
     }
+
+    //添加操作的界面
+    public function  adminAdd()
+    {
+        $this->view->assign('title','添加管理员');
+        $this->view->assign('keywords','php.cn');
+        $this->view->assign('desc','PHP中文网ThinkPHP5开发实战课程');
+        return $this->view->fetch('admin_add');
+    }
+
+    //渲染编辑管理员界面
+    public function adminEdit(Request $request)
+    {
+
+        $user_id = $request -> param('id');
+        $result = AdminModel::get($user_id);
+        $this->view->assign('title','编辑管理员信息');
+        $this->view->assign('keywords','php.cn');
+        $this->view->assign('desc','PHP中文网ThinkPHP5开发实战课程');
+        $this->view->assign('user_info',$result->getData());
+        return $this->view->fetch('admin_edit');
+    }
 }
