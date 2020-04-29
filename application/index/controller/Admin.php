@@ -12,7 +12,7 @@ class Admin extends Base
     //登录
     public function login()
     {
-        return $this-> view ->fetch('index');
+        return $this-> view ->fetch();
     }
 
     //验证登录
